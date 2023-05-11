@@ -30,7 +30,8 @@ export async function getStaticProps() {
   return {
     props: {
       name: 'karvok',
-      summary: 'This is a summary!',
+      summary:
+        'A customer focused full stack developer, I love building new things and learning more about operational security, data protection, and digital accessibility.',
     },
   };
 }
