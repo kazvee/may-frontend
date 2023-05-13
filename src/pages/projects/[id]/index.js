@@ -1,15 +1,29 @@
 import { Button, Grid, Box, Chip } from '@mui/material';
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 import PageDescription from '@/components/PageDescription';
 
 function Project({ project }) {
   return (
     <>
+      <NextSeo
+        title={project.name}
+        description={project.description}
+        openGraph={{
+          title: 'Title',
+          description: 'Description of the project',
+          url: 'google.com',
+          image: 'https://placedog.net/280?random=1',
+          type: 'websites',
+        }}
+      ></NextSeo>
       <Grid
         container
         direction='column'
         alignItems='center'
         justifyContent='center'
+        rowGap={2}
       >
         <PageDescription
           title={project.name}
@@ -34,10 +48,15 @@ function Project({ project }) {
         </Box>
         <h1>Tools Used</h1>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {project.tools.map((tool) => {
-            <Chip key={tool} label={tool} variant='outlined' />;
-          })}
+          {project.tools.map((tool) => (
+            <Chip key={tool} label={tool} variant='outlined' />
+          ))}
         </Box>
+        <Link href='/projects'>
+          <Button variant='contained' size='large'>
+            Go back
+          </Button>
+        </Link>
       </Grid>
     </>
   );
